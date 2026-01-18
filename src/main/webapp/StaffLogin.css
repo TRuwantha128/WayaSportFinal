@@ -1,0 +1,242 @@
+/*
+Staff Login CSS for WayaSport
+Refined: January 17, 2026
+Author: Grok (for Tharindu)
+Integrates with Student.css / Home.css theme (dark gradients, orange accents)
+*/
+
+/* Reset & Global Styles (Match Student.css) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif; /* Consistent with app */
+}
+
+body {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('Images/back.jpg'); /* Reuse your back.jpg; staff-themed if needed */
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+/* Main Container (Match Student.css) */
+.main {
+    width: 100%;
+    height: 100vh;
+    background: inherit; /* Inherit body bg */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Navigation Bar (Match Home.css / Student.css) */
+.navigationBar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 75px;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent for bg visibility */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.icon {
+    width: 200px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+}
+
+.icon h1.logo {
+    color: #ff7200; /* Orange theme */
+    font-size: 24px;
+    margin: 0;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Push to right */
+}
+
+.menu li {
+    margin-right: 30px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu a:hover {
+    color: #ff7200; /* Orange hover */
+}
+
+/* Login Card (Centered Form - Inspired by SignUp.css) */
+.login-container {
+    background: rgba(255, 255, 255, 0.95); /* Semi-transparent white for contrast over gradient */
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Matches SignUp.css shadow */
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out; /* Smooth entry */
+    margin: 20px; /* Padding on mobile */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #4a0da5; /* Purple accent for staff distinction */
+    font-weight: bold;
+}
+
+/* Form Rows (Match ItemSelect.css / Student.css) */
+.form-row {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    height: 50px; /* Slightly shorter than buttons for balance */
+    padding: 0 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff7200; /* Orange focus glow */
+    box-shadow: 0 0 8px rgba(255, 114, 0, 0.3);
+}
+
+input:invalid {
+    border-color: #ef4444; /* Red for invalid */
+    animation: shake 0.5s ease-in-out; /* Shake on error, match Student.css */
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Submit Button (Match Submit-btn from ItemSelect.css) */
+.submit-btn {
+    width: 100%;
+    height: 55px; /* Exact match to your app buttons */
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #4a0da5; /* Purple base for staff (vs orange for students) */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #3a0a85; /* Darker purple on hover */
+}
+
+/* Error/Success Messages (Match Student.css) */
+.error-msg {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    margin: 10px 0;
+    font-weight: bold;
+    text-align: center;
+    display: none; /* Hidden by default; show with JS */
+}
+
+
+
+/* Footer Link */
+.footer-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.footer-link a {
+    color: #4a0da5;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-link a:hover {
+    color: #ff7200; /* Orange on hover for consistency */
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness (Match Student.css media query) */
+@media (max-width: 768px) {
+    .login-container {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+
+    .navigationBar {
+        padding: 0 10px;
+    }
+
+    .icon h1.logo {
+        font-size: 20px;
+    }
+
+    .menu ul {
+        display: none; /* Hide menu on mobile; add hamburger if needed */
+    }
+
+    input[type="text"], input[type="password"] {
+        height: 45px;
+        font-size: 16px; /* Prevent iOS zoom */
+    }
+
+    .submit-btn {
+        height: 50px;
+        font-size: 16px;
+    }
+}

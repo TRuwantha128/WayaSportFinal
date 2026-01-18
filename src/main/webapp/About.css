@@ -1,0 +1,235 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 25, 2025, 12:03:44 PM
+    Author     : Asus
+*/
+*{
+    margin: 0;
+    padding: 0;
+    
+   
+}
+
+.main{
+    width : 100%; 
+    /*background: linear-gradient(to top,rgba(255, 255, 255, )50%,rgba(255,255,255)50%);*/
+    background: linear-gradient(to top,rgba(246, 246, 246, 0.5)50%,rgba(246, 246, 246, 0.5)50%),url(Images/back3.jpg);
+    background-position: center;
+    background-size:cover;
+    
+    /*height: 110vh; */
+}
+   
+.navigationBar{
+    width : 105%;
+    height:75px;
+    margin:auto;
+}
+.icon{
+    width:200px;
+    float:left;
+    height:70px;    
+
+}
+.logo{
+    width:350px;
+    color:#000000;
+    font-size: 45px;
+    font-family: Helvetica;
+    padding-left:55px;
+    float: left;
+    padding-top: 5px;
+    
+}
+
+.menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+    
+}
+ul{
+    float:left;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-left: 430px;
+}
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 16px;
+}
+ul li a{
+    text-decoration: none;
+    color:#000000;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+ul li a:hover{
+    color:#ff7200;
+}
+.Search{
+    width: 330px;
+    float: left;
+    margin-left: 600px;/*fixed*/
+}
+.srch{
+    font-family: 'Times New Roman';
+    width: 200px;
+    height: 40px;
+    background: transparent;
+    border:1px solid #000000;
+    margin-top: 17px;
+    color: #000000;
+    border-right: none;
+    font-size: 16px;
+    float:left;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.btn{
+    width:100px;
+    height: 40px;
+    background :#ff7200;
+    border: 2px solid #ff7200;
+    margin-top: 17px;
+    color : #fff;
+    font-size: 15px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.btn:focus{
+    outline:none;
+}
+.srch:focus{
+    outline:none;
+}
+.content{
+    width: 1200px;
+    height: auto;
+    padding-left: 30px;
+    color: #000000;
+    position: relative;
+    
+}
+.content .par{
+    padding-left: 20px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 40px;
+    font-size: 20px;
+}
+.content h1{
+    font-family: 'Times New Roman';
+    font-size: 45px;
+    padding-left: 20px;
+    margin-top: 4%;
+    letter-spacing: 2px;
+}
+.content span{
+    color:#4a0da5;
+    font-size: 40px;
+}
+
+.form{
+    
+    margin-left:440px;
+    border-radius: 10px;
+    padding: 20px;   /*fixed*/
+}
+
+.btnn{
+    
+    width: 280px;
+    height:130px;
+    background: #ff7200;
+    border: none;
+    margin-top: 150px;
+    font-size: 50px;
+    font-family:  Helvetica;
+    border-radius: 10px;
+    cursor: pointer;
+    color:#fff;
+}
+.btnn:hover{
+    background: #fff;
+    color: #ff7200;
+}
+.btnn a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+.Logos img{
+    height:35px;
+    width:35px;
+}
+.Logos{
+   
+    position: fixed;      
+    bottom: 20px;         
+    right: 47px;          
+    display: flex;
+    gap: 10px;           
+    z-index: 999;
+  
+}
+.RightScrollArea {
+    width: 400px;
+    height: 400px;
+    position: fixed;
+    top: 130px;
+    right: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 5px;
+    
+}
+
+.RightScrollArea .RightTrack {
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    width: max-content;
+    animation: scrollHorizontal 40s linear infinite;
+}
+
+.RightScrollArea img {
+    width: 400px;
+    height: 400px;
+    margin-right: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+    
+}
+
+@keyframes scrollHorizontal {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.top{
+    margin-left: 12px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family:  arial;
+}
+.par2{
+    margin-left: 12px;
+    font-size: 15px;
+    margin-top: 10px;
+    padding-left: 12px;
+    padding-bottom: 25px;
+    font-family: Arial;
+    letter-spacing: 1.2px;
+    line-height: 40px;
+    font-size: 20px;
+}
+

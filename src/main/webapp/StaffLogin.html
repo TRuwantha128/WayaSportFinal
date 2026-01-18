@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Staff Login - Waya Sport</title>
+    <link rel="stylesheet" href="StaffLogin.css"> <!-- Custom staff CSS -->
+</head>
+<body>
+    <div class="main">
+        <!-- Navigation Bar -->
+        <div class="navigationBar">
+            <div class="icon">
+                <h1 class="logo">Staff Login</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Student.html">Student Login</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Login Card / Form -->
+        <div class="login-container">
+            <h2>Staff Login</h2>
+            <form action="StaffLoginServlet" method="POST" class="item-form">
+                <div class="form-row">
+                    <label for="index">Staff Index:</label>
+                    <input type="text" id="index" name="index" required value="STAFF001" placeholder="e.g., STAFF001">
+                </div>
+                <div class="form-row">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required minlength="6" placeholder="Enter password">
+                </div>
+                <div class="form-row center">
+                    <button type="submit" class="submit-btn">Login as Staff</button>
+                </div>
+            </form>
+            <div class="footer-link">
+                <a href="Student.html">Switch to Student Login?</a>
+            </div>
+            
+            <div id="errorMsg" class="error-msg">
+                <span id="errorText">Invalid credentials. Please try again.</span>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+      
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === 'invalid') {
+            const errorDiv = document.getElementById('errorMsg');
+            errorDiv.style.display = 'block';
+            setTimeout(() => { errorDiv.style.display = 'none'; }, 5000); 
+        }
+
+      
+    </script>
+</body>
+</html>

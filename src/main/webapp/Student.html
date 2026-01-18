@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Waya Sport</title>
+    <link rel="stylesheet" href="Student.css">
+    <style>
+    #errorMsg { background: linear-gradient(135deg, #ef4444, #dc2626) !important; color: white !important; padding: 20px !important; border-radius: 12px !important; }
+    #errorMsg::before { content: '⚠️ ' !important; }
+</style>
+</head>
+<body>
+    <!-- Logout success message -->
+<% if("success".equals(request.getParameter("logout"))) { %>
+    <div class="logout-success-message">
+        <strong>✓ Successfully logged out</strong><br>
+        Come back anytime!
+    </div>
+<% } %>
+    <div class="main">
+        <div class="navigationBar">
+            <div class="icon">
+                <h1 class="logo">WayaSport</h1>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Service.html">Service</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="Search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"><button class="btn">Search</button></a>
+            </div>
+        </div>
+        <div class="content">
+            <h1>Wayamba University of Sri Lanka <br><span>Physical Education Unit</span><br>Sports Council</h1><br><br>
+            <p class="par"><b>The Physical Education Unit (PE Unit)</b> of Wayamba University <br>of Sri Lanka is responsible 
+                for all sports and recreational <br>activities within the university.</p> 
+            
+            <div class="form">
+                <h2>Login Here</h2>
+                
+                <!-- Success Message (Green Banner) -->
+                <div id="successMsg" class="success-msg" style="display: none;">
+                    <span id="msgText">✅ Registration Successful! You can now log in with your new account.</span>
+                    <button onclick="hideSuccessMsg()">×</button>
+                </div>
+                
+                <!-- Error Message (Red Banner) -->
+                <div id="errorMsg" class="error-msg" style="display: none;">
+                    <span id="errorText"></span>
+                    <button onclick="hideErrorMsg()">×</button>
+                </div>
+                
+                <!-- Updated Form: Submits to LoginPage Servlet -->
+                <form id="loginForm" action="LoginPage" method="POST">
+                    <input type="text" name="index" id="index" placeholder="Enter 6-digit Index here" required pattern="\d{6}" maxlength="6" style="border-bottom: 1px solid #ff7200;">
+                    <input type="password" name="password" id="password" placeholder="Enter Password here" required minlength="6" style="border-bottom: 1px solid #ff7200;">
+                    <button class="btnn" type="submit">Login</button>  <!-- Now submits, no <a> link -->
+
+                    <p class="link">Don't have an account?<br>
+                    <a href="SignUp.html">Sign up</a> here</p>
+                </form>
+            </div>
+        </div>
+        <div class="Logos">
+            <a href="https://www.instagram.com/wayambauniversity/?hl=en" target="_blank"><img src="Images/insta.png"></a>
+            <a href="https://lk.linkedin.com/school/wayamba-university/" target="_blank"><img src="Images/linkedin.png"></a>
+            <a href="https://www.facebook.com/wuslofficial/" target="_blank"><img src="Images/fbnew.png"></a>
+            <a href="https://www.youtube.com/channel/UCCC3sx1ispa_2wCA3EYBotw" target="_blank"><img src="Images/youtube.png"></a>
+        </div>
+    </div>
+    <script>
+        // Elements
+        const loginForm = document.getElementById('loginForm');
+        const indexInput = document.getElementById('index');
+        const passwordInput = document.getElementById('password');
+        const submitBtn = loginForm.querySelector('button[type="submit"]');
+
+        // Real-time validation: Green/red border feedback
+        function validateIndex() {
+            const val = indexInput.value.trim();
+            const isValid = /^\d{6}$/.test(val);
+            indexInput.style.borderBottomColor = isValid ? '#10b981' : '#ef4444'; // Green/red
+            return isValid;
+        }
+
+        function validatePassword() {
+            const val = passwordInput.value.trim();
+            const isValid = val.length >= 6;
+            passwordInput.style.borderBottomColor = isValid ? '#10b981' : '#ef4444';
+            return isValid;
+        }
+
+        // Attach real-time listeners
+        indexInput.addEventListener('input', validateIndex);
+        passwordInput.addEventListener('input', validatePassword);
+
+        // Block submit if invalid
+        loginForm.addEventListener('submit', function(e) {
+            const indexValid = validateIndex() && indexInput.value.trim().length === 6;
+            const passwordValid = validatePassword() && passwordInput.value.trim().length > 0;
+
+            if (!indexValid || !passwordValid) {
+                e.preventDefault();
+                if (!indexValid) {
+                    showErrorMsg('❌ Please enter a valid 6-digit index.');
+                    indexInput.focus();
+                } else {
+                    showErrorMsg('❌ Password must be at least 6 characters.');
+                    passwordInput.focus();
+                }
+                return false;
+            }
+            // Prevent double-submit
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Logging in...';
+        });
+
+        // Show success message from URL (e.g., after registration)
+        function initSuccessMsg() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const msgDiv = document.getElementById('successMsg');
+            const msgText = document.getElementById('msgText');
+            
+            if (urlParams.get('success') === 'true') {
+                msgText.textContent = '✅ Registration Successful! You can now log in with your new account.';
+                msgDiv.style.display = 'block';
+            } else if (urlParams.get('verified') === 'true') {
+                msgText.textContent = '✅ Email Verified! You can now log in.';
+                msgDiv.style.display = 'block';
+            }
+            
+            if (msgDiv.style.display === 'block') {
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+
+        function hideSuccessMsg() {
+            document.getElementById('successMsg').style.display = 'none';
+        }
+
+        // Show error from servlet redirect (e.g., ?error=incorrect)
+        function initErrorMsg() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorType = urlParams.get('error');
+            if (!errorType) return;
+
+            let errorText = '';
+            switch (errorType) {
+                case 'invalid_index':
+                    errorText = ' Invalid index format (must be 6 digits).';
+                    break;
+                case 'empty_password':
+                    errorText = ' Password is required.';
+                    break;
+                case 'incorrect':
+                    errorText = ' Incorrect index or password.';
+                    break;
+                case 'unverified':
+                    errorText = '️ Account not verified! Check your email.';
+                    break;
+                case 'not_found':
+                    errorText = ' Index not found.';
+                    break;
+                case 'server':
+                    errorText = ' Server error. Try again later.';
+                    break;
+                default:
+                    errorText = ' An error occurred. Please try again.';
+            }
+
+            showErrorMsg(errorText);
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        function showErrorMsg(text) {
+            const errorDiv = document.getElementById('errorMsg');
+            const errorText = document.getElementById('errorText');
+            errorText.textContent = text;
+            errorDiv.style.display = 'block';
+            setTimeout(hideErrorMsg, 5000); // Auto-hide 5s
+        }
+
+        function hideErrorMsg() {
+            document.getElementById('errorMsg').style.display = 'none';
+        }
+
+        // Auto-hide success if shown
+        setTimeout(function() {
+            if (document.getElementById('successMsg').style.display === 'block') {
+                hideSuccessMsg();
+            }
+        }, 5000);
+
+        // Init on load
+        document.addEventListener('DOMContentLoaded', function() {
+            initSuccessMsg();
+            initErrorMsg();
+            validateIndex();
+            validatePassword();
+        });
+    </script>
+</body>
+</html>

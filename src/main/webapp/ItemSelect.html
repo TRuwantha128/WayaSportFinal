@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Waya Sport - Order Items</title>
+    <link rel="stylesheet" href="ItemSelect.css">
+</head>
+<body>
+<div class="main">
+
+    <!-- Small Logout button (visible after login) -->
+    <div class="logout-container">
+        <a href="Student.html?logout=true" class="logout-btn">Logout</a>
+    </div>
+
+    <!-- Optional welcome message -->
+    <div class="welcome-message">
+        <h2>Welcome to Waya Sport Ordering</h2>
+        <p>Select an item and quantity to place your order</p>
+    </div>
+
+    <div class="navigationBar">
+        <div class="icon">
+            <h1 class="logo">Order</h1>
+        </div>
+
+        <!-- Menu is hidden after login (controlled via CSS) -->
+        <div class="menu">
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="About.html">About</a></li>
+                <li><a href="Service.html">Service</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <form action="OrderServlet" method="POST" class="item-form">
+
+        <div class="form-row">
+            <label for="item">Item</label>
+            <select name="item" id="item" required>
+                <option value="">--- Select Item ---</option>
+                <option value="1">Football</option>
+                <option value="2">Cricket Bat</option>
+                <option value="3">Badminton Racket</option>
+                <option value="4">Netball</option>
+                <option value="5">Goggles & Caps</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" id="quantity" min="1" value="1" required>
+        </div>
+
+        <div class="form-row center">
+            <button type="submit" class="submit-btn">Order</button>
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>

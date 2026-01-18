@@ -1,0 +1,189 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 25, 2025, 2:33:05 PM
+    Author     : Asus
+*/
+*{
+    margin: 0;
+    padding: 0;
+    
+   
+}
+
+.main{
+    width : 100%; 
+    /*background: linear-gradient(to top,rgba(255, 255, 255, )50%,rgba(255,255,255)50%);*/
+    background: linear-gradient(to top,rgba(246, 246, 246, 0.5)50%,rgba(246, 246, 246, 0.5)50%),url(Images/back3.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 190vh; 
+}
+   
+.navigationBar{
+    width : 105%;
+    height:125px;
+    margin:auto;
+}
+.icon{
+    width:200px;
+    float:left;
+    height:70px;    
+
+}
+.logo{
+    width:350px;
+    color:#000000;
+    font-size: 45px;
+    font-family: Helvetica;
+    padding-left:55px;
+    float: left;
+    padding-top: 5px;
+    
+}
+
+.menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+    
+}
+ul{
+    float:left;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-left: 430px;
+}
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 16px;
+}
+ul li a{
+    text-decoration: none;
+    color:#000000;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+ul li a:hover{
+    color:#ff7200;
+}
+
+.p1 li a{
+    color: blue;
+}
+
+.pul{
+    float: left;
+    margin-left: 0px;
+}
+.pul li{
+    list-style: none;
+    margin-left: 180px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.p1{
+    float: left;
+    margin-left: 0px;
+    
+}
+.p1 li{
+    list-style: none;
+    margin-left: 110px;
+    font-size: 25px;
+    text-align:center; 
+}
+.p2{
+    margin-left: 185px;
+    font-size: 25px;
+    margin-top: 10px;
+    line-height: 37px;
+}
+.Search{
+    width: 330px;
+    float: left;
+    margin-left: 600px;
+}
+.srch{
+    font-family: 'Times New Roman';
+    width: 200px;
+    height: 40px;
+    background: transparent;
+    border:1px solid #000000;
+    margin-top: 17px;
+    color: #000000;
+    border-right: none;
+    font-size: 16px;
+    float:left;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.btn{
+    width:100px;
+    height: 40px;
+    background :#ff7200;
+    border: 2px solid #ff7200;
+    margin-top: 17px;
+    color : #fff;
+    font-size: 15px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.btn:focus{
+    outline:none;
+}
+.srch:focus{
+    outline:none;
+}
+.content .top{
+    margin-left: 50px;
+    margin-top: 30px;
+    font-size: 35px;
+    font-family:Helvetica;
+    font-weight: bold;
+    color:#4a0da5;
+}
+.content2 .top1{
+    clear: both;
+    margin-left: 50px;
+    font-size: 35px;
+    font-family:Helvetica;
+    font-weight: bold;
+    color:#4a0da5;
+}
+.content3 .top2{
+    clear: both;
+    margin-left: 50px;
+    font-size: 35px;
+    font-family:Helvetica;
+    font-weight: bold;
+    color:#4a0da5;
+}
+.content3 .map{
+    margin-left: 185px;
+    margin-top: 30px;
+}
+.Logos img{
+    height:35px;
+    width:35px;
+}
+.Logos{
+   
+    position: fixed;      
+    bottom: 20px;         
+    right: 47px;          
+    display: flex;
+    gap: 10px;           
+    z-index: 999;
+}
+
+
+
+

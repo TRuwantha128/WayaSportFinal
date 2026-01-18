@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Waya Sport</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SignUp.css">
+</head>
+<body>
+<div class="signup-container">
+    <h2>Sign Up</h2>
+    <form id="signupForm" action="RegisterServlet" method="POST">
+        <label>Index (6-digit):</label>
+        <input type="number" name="Index" min="100000" max="999999" required>
+        
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        
+        <label>Full Name:</label>
+        <input type="text" name="fullName" required>
+        
+        <!-- Password -->
+        <div class="password-group">
+            <label>Password:</label>
+            <div class="input-wrapper">
+                <input type="password" id="password" name="password" required minlength="6">
+                <button type="button" class="toggle-btn"
+                        onclick="togglePassword('password', this)">👁</button>
+            </div>
+        </div>
+        
+        <!-- Confirm Password -->
+        <div class="password-group">
+            <label>Confirm Password:</label>
+            <div class="input-wrapper">
+                <input type="password" id="confirmPassword" name="confirmPassword" required minlength="6">
+                <button type="button" class="toggle-btn"
+                        onclick="togglePassword('confirmPassword', this)">👁</button>
+            </div>
+        </div>
+        
+        <div id="passwordMatchMsg"></div>
+        
+        <button type="submit">Register</button>
+        
+        <p class="footer-text">
+            After registering, check your email (including spam) to verify your account.
+        </p>
+    </form>
+</div>
+
+<script>
+    const password = document.getElementById("password");
+    const confirmPassword = document.getElementById("confirmPassword");
+    const msg = document.getElementById("passwordMatchMsg");
+    
+    function togglePassword(id, btn) {
+        const input = document.getElementById(id);
+        if (input.type === "password") {
+            input.type = "text";
+            btn.textContent = "🙈";
+        } else {
+            input.type = "password";
+            btn.textContent = "👁";
+        }
+    }
+    
+    function checkMatch() {
+        if (!password.value || !confirmPassword.value) {
+            msg.textContent = "";
+            msg.style.background = "";
+            return;
+        }
+        if (password.value === confirmPassword.value) {
+            msg.textContent = "✓ Passwords match";
+            msg.style.color = "#059669";
+            msg.style.background = "#d1fae5";
+        } else {
+            msg.textContent = "✗ Passwords do not match";
+            msg.style.color = "#dc2626";
+            msg.style.background = "#fee2e2";
+        }
+    }
+    
+    password.addEventListener("input", checkMatch);
+    confirmPassword.addEventListener("input", checkMatch);
+</script>
+</body>
+</html>
